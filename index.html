@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viajes Mike | Explora el Mundo</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAV BAR -->
+    <nav class="navbar glass-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">Viajes</span> Mike
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#destinos">Destinos</a></li>
+                <li><a href="#paquetes">Paquetes</a></li>
+                <li><a href="#promociones">Promociones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="inicio" class="hero"
+        style="background-image: linear-gradient(rgba(5, 30, 43, 0.4), rgba(5, 30, 43, 0.85)), url('assets/hero_beach.png');">
+        <div class="hero-content scroll-reveal">
+            <h1 class="hero-title">Explora el mundo con <span class="text-gold">Viajes Mike</span></h1>
+            <p class="hero-subtitle">Descubre destinos increíbles al mejor precio</p>
+            <div class="hero-cta-group">
+                <a href="#contacto" class="btn btn-primary btn-glow">Reserva ahora</a>
+                <a href="#destinos" class="btn btn-secondary">Ver Destinos</a>
+            </div>
+
+            <!-- Quick Search Bar -->
+            <div class="search-bar-container glass-card">
+                <div class="search-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <div>
+                        <label>Destino</label>
+                        <select id="quick-dest">
+                            <option value="paris">París, Francia</option>
+                            <option value="cancun">Cancún, México</option>
+                            <option value="tokyo">Tokio, Japón</option>
+                            <option value="santorini">Santorini, Grecia</option>
+                            <option value="dubai">Dubái, Emiratos Árabes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="search-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <div>
+                        <label>Salida</label>
+                        <input type="date" value="2026-06-15">
+                    </div>
+                </div>
+                <button class="btn btn-search btn-primary"
+                    onclick="window.location.hash='#contacto'; fillDestinationSelect();">
+                    Buscar Viaje
+                </button>
+            </div>
+        </div>
+        <div class="hero-overlay-waves"></div>
+    </header>
+
+    <!-- PROMOTIONS SECTION (With Countdown) -->
+    <section id="promociones" class="section promotions">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-tag font-alt">Ofertas por Tiempo Limitado</span>
+                <h2 class="section-title">Promociones Especiales</h2>
+                <p class="section-subtitle">No dejes pasar estas increíbles oportunidades diseñadas para ti.</p>
+            </div>
+
+            <!-- Countdown Timer Grid -->
+            <div class="countdown-banner glass-card scroll-reveal">
+                <div class="countdown-text">
+                    <h3>¡La oferta de verano a <span class="text-gold">Dubái</span> expira pronto!</h3>
+                    <p>Reserva tu lugar ahora y asegura tarifas preferenciales.</p>
+                </div>
+                <div class="countdown-timer" id="countdown-timer">
+                    <div class="timer-box">
+                        <span id="days">00</span>
+                        <label>Días</label>
+                    </div>
+                    <div class="timer-box">
+                        <span id="hours">00</span>
+                        <label>Horas</label>
+                    </div>
+                    <div class="timer-box">
+                        <span id="minutes">00</span>
+                        <label>Mins</label>
+                    </div>
+                    <div class="timer-box">
+                        <span id="seconds">00</span>
+                        <label>Segs</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-grid">
+                <!-- Promo 1 -->
+                <div class="promo-card glass-card scroll-reveal">
+                    <div class="promo-badge">30% OFF</div>
+                    <div class="promo-image-wrapper">
+                        <img src="assets/paris.png" alt="Europa Promo">
+                    </div>
+                    <div class="promo-info">
+                        <h3>Descuento a Europa</h3>
+                        <p>Explora las capitales históricas de Europa con un 30% de descuento en vuelos y alojamiento.
+                        </p>
+                        <div class="promo-footer">
+                            <span class="promo-price">Desde <span class="price-val">$1,299 USD</span></span>
+                            <a href="#contacto" class="btn btn-small btn-primary"
+                                onclick="selectDestination('paris')">Obtener Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promo 2 -->
+                <div class="promo-card glass-card scroll-reveal">
+                    <div class="promo-badge">2x1</div>
+                    <div class="promo-image-wrapper">
+                        <img src="assets/cancun.png" alt="Cancun Promo">
+                    </div>
+                    <div class="promo-info">
+                        <h3>Viaje 2x1 a Cancún</h3>
+                        <p>Viaja con un acompañante al paraíso tropical de Cancún pagando la tarifa de uno solo en hotel
+                            todo incluido.</p>
+                        <div class="promo-footer">
+                            <span class="promo-price">Desde <span class="price-val">$899 USD</span></span>
+                            <a href="#contacto" class="btn btn-small btn-primary"
+                                onclick="selectDestination('cancun')">Obtener Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promo 3 -->
+                <div class="promo-card glass-card scroll-reveal">
+                    <div class="promo-badge">OFERTA DE VERANO</div>
+                    <div class="promo-image-wrapper">
+                        <img src="assets/dubai.png" alt="Dubai Promo">
+                    </div>
+                    <div class="promo-info">
+                        <h3>Oferta de Verano a Dubái</h3>
+                        <p>Vive el lujo futurista en el Medio Oriente con visitas guiadas de cortesía al Burj Khalifa.
+                        </p>
+                        <div class="promo-footer">
+                            <span class="promo-price">Desde <span class="price-val">$1,899 USD</span></span>
+                            <a href="#contacto" class="btn btn-small btn-primary"
+                                onclick="selectDestination('dubai')">Obtener Oferta</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POPULAR DESTINATIONS SECTION -->
+    <section id="destinos" class="section destinations bg-dark-gradient">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-tag font-alt">Destinos Exclusivos</span>
+                <h2 class="section-title">Destinos Populares</h2>
+                <p class="section-subtitle">Elige tu próxima aventura entre nuestros destinos más recomendados.</p>
+            </div>
+
+            <div class="destinations-grid">
+                <!-- Paris -->
+                <div class="destination-card glass-card scroll-reveal">
+                    <div class="card-image-container">
+                        <img src="assets/paris.png" alt="París">
+                        <span class="card-price">$1,450 USD</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>París, Francia</h3>
+                        <p>La ciudad de la luz y el romance. Pasea por el río Sena, visita museos icónicos y disfruta de
+                            una gastronomía espectacular.</p>
+                        <a href="#contacto" class="btn-card-link text-gold"
+                            onclick="selectDestination('paris')">Reservar ahora &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Cancun -->
+                <div class="destination-card glass-card scroll-reveal">
+                    <div class="card-image-container">
+                        <img src="assets/cancun.png" alt="Cancún">
+                        <span class="card-price">$980 USD</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Cancún, México</h3>
+                        <p>Playas de arena blanca y aguas turquesas del Caribe. Relájate en resorts todo incluido y
+                            explora ruinas mayas misteriosas.</p>
+                        <a href="#contacto" class="btn-card-link text-gold"
+                            onclick="selectDestination('cancun')">Reservar ahora &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Tokyo -->
+                <div class="destination-card glass-card scroll-reveal">
+                    <div class="card-image-container">
+                        <img src="assets/tokyo.png" alt="Tokio">
+                        <span class="card-price">$1,790 USD</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Tokio, Japón</h3>
+                        <p>La combinación perfecta entre tradición y futurismo. Templos antiguos conviviendo con luces
+                            de neón y tecnología de punta.</p>
+                        <a href="#contacto" class="btn-card-link text-gold"
+                            onclick="selectDestination('tokyo')">Reservar ahora &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Santorini -->
+                <div class="destination-card glass-card scroll-reveal">
+                    <div class="card-image-container">
+                        <img src="assets/santorini.png" alt="Santorini">
+                        <span class="card-price">$1,250 USD</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Santorini, Grecia</h3>
+                        <p>Icónicas casas blancas y cúpulas azules sobre un acantilado volcánico. Contempla los
+                            atardeceres más hermosos del mar Egeo.</p>
+                        <a href="#contacto" class="btn-card-link text-gold"
+                            onclick="selectDestination('santorini')">Reservar ahora &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MAP OF DESTINATIONS -->
+    <section class="section interactive-map-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-tag font-alt">Exploración Interactiva</span>
+                <h2 class="section-title">Mapa de Destinos Turísticos</h2>
+                <p class="section-subtitle">Interactúa con nuestro mapamundi y descubre los destinos directamente.</p>
+            </div>
+
+            <div class="map-container glass-card scroll-reveal">
+                <svg id="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Stylized minimalist grid world map layout outline -->
+                    <!-- Landmass representation using paths -->
+                    <path class="land"
+                        d="M150,150 L180,140 L220,160 L240,190 L260,240 L250,290 L270,340 L260,380 L230,420 L210,430 L200,410 L210,380 L220,330 L210,290 L180,260 L160,250 L140,210 L140,180 Z" />
+                    <!-- North America & South America Outline simplified -->
+                    <path class="land"
+                        d="M220,310 L240,320 L260,345 L255,380 L230,420 L225,445 L215,445 L215,410 L205,390 L195,360 L205,330 Z" />
+                    <!-- South America refinement -->
+                    <path class="land"
+                        d="M420,120 L450,110 L480,120 L510,140 L540,140 L560,110 L620,100 L680,110 L750,130 L800,160 L850,200 L880,240 L850,250 L810,260 L780,230 L740,230 L700,240 L650,230 L600,260 L570,280 L540,260 L500,280 L480,310 L450,330 L450,370 L480,410 L480,430 L450,440 L430,420 L420,370 L390,340 L370,310 L380,260 L400,220 L400,180 L390,150 Z" />
+                    <!-- Eurasia & Africa Outline simplified -->
+                    <path class="land"
+                        d="M420,220 L460,210 L500,220 L520,240 L530,280 L520,320 L500,350 L480,360 L460,360 L445,350 L435,320 L415,290 L415,250 Z" />
+                    <!-- Africa refinement -->
+                    <path class="land" d="M780,340 L810,330 L840,350 L860,380 L840,410 L800,400 L770,380 L760,355 Z" />
+                    <!-- Australia Outline simplified -->
+                    <path class="land" d="M495,110 L510,105 L525,115 L515,125 Z" /> <!-- UK/Ireland -->
+                    <path class="land" d="M840,160 L860,180 L855,210 L840,210 L830,180 Z" /> <!-- Japan -->
+
+                    <!-- Ocean Grid lines for tech aesthetic -->
+                    <line x1="50" y1="0" x2="50" y2="500" class="grid-line" />
+                    <line x1="200" y1="0" x2="200" y2="500" class="grid-line" />
+                    <line x1="350" y1="0" x2="350" y2="500" class="grid-line" />
+                    <line x1="500" y1="0" x2="500" y2="500" class="grid-line" />
+                    <line x1="650" y1="0" x2="650" y2="500" class="grid-line" />
+                    <line x1="800" y1="0" x2="800" y2="500" class="grid-line" />
+                    <line x1="950" y1="0" x2="950" y2="500" class="grid-line" />
+
+                    <line x1="0" y1="100" x2="1000" y2="100" class="grid-line" />
+                    <line x1="0" y1="200" x2="1000" y2="200" class="grid-line" />
+                    <line x1="0" y1="300" x2="1000" y2="300" class="grid-line" />
+                    <line x1="0" y1="400" x2="1000" y2="400" class="grid-line" />
+
+                    <!-- Map Pins (Dots) -->
+                    <!-- Paris: lat/long approximate on SVG coordinates x=495, y=140 -->
+                    <g class="map-pin" data-destination="paris" onclick="selectDestination('paris')">
+                        <circle cx="495" cy="140" r="15" class="pin-glow" />
+                        <circle cx="495" cy="140" r="6" class="pin-core" />
+                        <text x="495" y="120" class="pin-label">París</text>
+                    </g>
+                    <!-- Cancun: x=210, y=230 -->
+                    <g class="map-pin" data-destination="cancun" onclick="selectDestination('cancun')">
+                        <circle cx="210" cy="230" r="15" class="pin-glow" />
+                        <circle cx="210" cy="230" r="6" class="pin-core" />
+                        <text x="210" y="210" class="pin-label">Cancún</text>
+                    </g>
+                    <!-- Tokyo: x=845, y=185 -->
+                    <g class="map-pin" data-destination="tokyo" onclick="selectDestination('tokyo')">
+                        <circle cx="845" cy="185" r="15" class="pin-glow" />
+                        <circle cx="845" cy="185" r="6" class="pin-core" />
+                        <text x="845" y="165" class="pin-label">Tokio</text>
+                    </g>
+                    <!-- Santorini: x=530, y=165 -->
+                    <g class="map-pin" data-destination="santorini" onclick="selectDestination('santorini')">
+                        <circle cx="530" cy="165" r="15" class="pin-glow" />
+                        <circle cx="530" cy="165" r="6" class="pin-core" />
+                        <text x="530" y="145" class="pin-label">Santorini</text>
+                    </g>
+                    <!-- Dubai: x=605, y=200 -->
+                    <g class="map-pin" data-destination="dubai" onclick="selectDestination('dubai')">
+                        <circle cx="605" cy="200" r="15" class="pin-glow" />
+                        <circle cx="605" cy="200" r="6" class="pin-core" />
+                        <text x="605" y="180" class="pin-label">Dubái</text>
+                    </g>
+                </svg>
+
+                <!-- Tooltip floating layout dynamically modified by JS -->
+                <div id="map-tooltip" class="map-tooltip glass-card">
+                    <h4 id="tooltip-title">Destino</h4>
+                    <p id="tooltip-desc">Selecciona un pin en el mapa para ver los detalles del viaje.</p>
+                    <div class="tooltip-meta">
+                        <span id="tooltip-price" class="text-gold font-alt">$0 USD</span>
+                        <a href="#contacto" id="tooltip-btn" class="btn btn-small btn-primary">Reservar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section id="paquetes" class="section benefits">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-tag font-alt">¿Por qué viajar con nosotros?</span>
+                <h2 class="section-title">Nuestros Beneficios</h2>
+                <p class="section-subtitle">Brindamos una experiencia premium en cada etapa de tu aventura.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <!-- Benefit 1 -->
+                <div class="benefit-card glass-card scroll-reveal">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                    </div>
+                    <h3>Vuelos seguros</h3>
+                    <p>Contamos con alianzas estratégicas con las aerolíneas más seguras y mejor calificadas a nivel
+                        mundial.</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="benefit-card glass-card scroll-reveal">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3>Hoteles premium</h3>
+                    <p>Hospedajes rigurosamente seleccionados de categoría 5 estrellas y boutique, garantizando máximo
+                        confort.</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="benefit-card glass-card scroll-reveal">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3>Atención 24/7</h3>
+                    <p>Un equipo de concierges altamente calificado disponible en cualquier momento para asistirte en tu
+                        viaje.</p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="benefit-card glass-card scroll-reveal">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3>Mejores precios</h3>
+                    <p>Monitoreamos tarifas continuamente para ofrecerte la mejor relación costo-beneficio del mercado
+                        turístico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section testimonials bg-dark-gradient">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-tag font-alt">Opiniones de Clientes</span>
+                <h2 class="section-title">Experiencias Memorables</h2>
+                <p class="section-subtitle">Lee lo que dicen nuestros viajeros sobre sus aventuras diseñadas por
+                    nosotros.</p>
+            </div>
+
+            <div class="testimonials-slider scroll-reveal">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card glass-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"El viaje a Santorini superó todas nuestras expectativas. El hotel
+                        premium frente a la caldera era de ensueño, y el soporte 24/7 de Viajes Mike solucionó al
+                        instante una reprogramación de vuelo sin estrés."</p>
+                    <div class="testimonial-user">
+                        <div class="user-avatar" style="background-color: var(--color-ocean);">AM</div>
+                        <div class="user-info">
+                            <h4>Alejandro Mendoza</h4>
+                            <span>Viajó a Santorini, Grecia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card glass-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Reservar con Viajes Mike fue increíblemente sencillo. El paquete 2x1 a
+                        Cancún tuvo un precio inigualable y la calidad del resort fue maravillosa. ¡Totalmente
+                        recomendados!"</p>
+                    <div class="testimonial-user">
+                        <div class="user-avatar" style="background-color: var(--color-gold);">SF</div>
+                        <div class="user-info">
+                            <h4>Sofia Fernández</h4>
+                            <span>Viajó a Cancún, México</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card glass-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Tokio fue espectacular. El itinerario y las sugerencias de la agencia
+                        nos permitieron descubrir la faceta más futurista pero también la tradicional de Japón con total
+                        comodidad. ¡Una aventura perfecta!"</p>
+                    <div class="testimonial-user">
+                        <div class="user-avatar"
+                            style="background-color: var(--color-light-blue); color: var(--color-bg-dark);">CR</div>
+                        <div class="user-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <span>Viajó a Tokio, Japón</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="section gallery">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-tag font-alt">Galería de Fotos</span>
+                <h2 class="section-title">Capturas de Viaje</h2>
+                <p class="section-subtitle">Instantes congelados de pura magia y exploración en nuestros destinos.</p>
+            </div>
+
+            <div class="gallery-grid scroll-reveal">
+                <div class="gallery-item item-wide">
+                    <img src="assets/hero_beach.png" alt="Aventura de Playa">
+                    <div class="gallery-overlay">
+                        <h4>Paraísos Costeros</h4>
+                        <span>Relax y Sol</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/paris.png" alt="Cultura París">
+                    <div class="gallery-overlay">
+                        <h4>Elegancia Europea</h4>
+                        <span>París histórico</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/tokyo.png" alt="Futurismo Tokio">
+                    <div class="gallery-overlay">
+                        <h4>Neón Nocturno</h4>
+                        <span>Calles de Tokio</span>
+                    </div>
+                </div>
+                <div class="gallery-item item-tall">
+                    <img src="assets/santorini.png" alt="Grecia">
+                    <div class="gallery-overlay">
+                        <h4>Paz en el Egeo</h4>
+                        <span>Vistas a Santorini</span>
+                    </div>
+                </div>
+                <div class="gallery-item item-wide">
+                    <img src="assets/dubai.png" alt="Dubai Moderno">
+                    <div class="gallery-overlay">
+                        <h4>Lujo Desértico</h4>
+                        <span>Skyline de Dubái</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section id="contacto" class="section contact">
+        <div class="container">
+            <div class="contact-wrapper glass-card scroll-reveal">
+                <div class="contact-info-panel">
+                    <span class="section-tag font-alt">Inicia Tu Aventura</span>
+                    <h2>Planifica el Viaje de tus Sueños</h2>
+                    <p>Completa el formulario y uno de nuestros concierges de viaje de lujo se pondrá en contacto
+                        contigo en menos de 24 horas.</p>
+
+                    <div class="contact-meta-items">
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <div>
+                                <h4>Llámanos</h4>
+                                <p>+1 (800) 555-MIKE</p>
+                            </div>
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <div>
+                                <h4>Escríbenos</h4>
+                                <p>viajes@viajesmike.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actual Form -->
+                <form id="contact-form" class="contact-form-element">
+                    <div class="form-group">
+                        <label for="form-name">Nombre Completo</label>
+                        <input type="text" id="form-name" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-email">Correo Electrónico</label>
+                        <input type="email" id="form-email" placeholder="Ej. juan@correo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-destination">Destino Deseado</label>
+                        <select id="form-destination" required>
+                            <option value="" disabled selected>Selecciona tu destino...</option>
+                            <option value="paris">París, Francia</option>
+                            <option value="cancun">Cancún, México</option>
+                            <option value="tokyo">Tokio, Japón</option>
+                            <option value="santorini">Santorini, Grecia</option>
+                            <option value="dubai">Dubái, Emiratos Árabes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-message">Mensaje / Requerimientos Especiales</label>
+                        <textarea id="form-message" rows="4"
+                            placeholder="Cuéntanos más sobre las fechas tentativas, número de viajeros, etc..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full btn-glow">Enviar Solicitud</button>
+                    <div id="form-feedback" class="form-feedback hidden"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo"><span class="logo-accent">Viajes</span> Mike</a>
+                    <p>Creando experiencias extraordinarias e inolvidables a través de los destinos más exóticos y
+                        premium del planeta.</p>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#destinos">Destinos</a></li>
+                        <li><a href="#paquetes">Paquetes</a></li>
+                        <li><a href="#promociones">Promociones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-col">
+                    <h4>Contacto</h4>
+                    <p>Teléfono: +1 (800) 555-MIKE</p>
+                    <p>Correo: viajes@viajesmike.com</p>
+                    <p>Ubicación: Luxury Tower, Piso 15, Ciudad Viajera</p>
+                </div>
+                <div class="footer-social-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M9 8H7v3h2v9h3v-9h3.6l.4-3H12V6c0-.9.2-1.2 1-1.2h2V2h-3c-3 0-5 1.8-5 4.8V8z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.1c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.5.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .5 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.5 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.5-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-.1.4-.2-.4-1-.5-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.5-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.5 1.3-.1 1.7-.1 4.9-.1zM12 0C8.7 0 8.3 0 7 0.1 5.7 0.2 4.8 0.4 4 0.7c-.8.3-1.5.7-2.1 1.4C1.2 2.7.8 3.4.5 4.2c-.3.8-.5 1.7-.6 3C0 8.5 0 8.9 0 12.2s0 3.7.1 5c.1 1.3.3 2.2.6 3 .3.8.7 1.5 1.4 2.1.6.6 1.3 1 2.1 1.4.8.3 1.7.5 3 .6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.2-.3 3-.6.8-.3 1.5-.7 2.1-1.4.6-.6 1-1.3 1.4-2.1.3-.8.5-1.7.6-3 0-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.3-.3-2.2-.6-3-.3-.8-.7-1.5-1.4-2.1-.6-.6-1.3-1-2.1-1.4-.8-.3-1.7-.5-3-.6C15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-11.8c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Viajes Mike. Todos los derechos reservados. Diseñado para experiencias premium.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOURIST ASSISTANT CHATBOT WIDGET -->
+    <div class="chatbot-widget" id="chatbot-container">
+        <!-- Floating FAB button -->
+        <button class="chatbot-fab btn-glow" id="chatbot-fab" aria-label="Asistente de viaje">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="chat-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            <span class="fab-badge">1</span>
+        </button>
+
+        <!-- Chat Window -->
+        <div class="chatbot-window glass-card hidden" id="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">M</div>
+                <div class="chatbot-title-info">
+                    <h4>Mike</h4>
+                    <span class="status-indicator online">En línea</span>
+                </div>
+                <button class="chatbot-close" id="chatbot-close">&times;</button>
+            </div>
+
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message system">
+                    Hola, soy Mike, tu asistente de viajes inteligente. ¿A qué rincón del mundo te gustaría escapar hoy?
+                    🌍✈️
+                </div>
+                <div class="message system suggestions">
+                    <p>Pregúntame sobre:</p>
+                    <button class="suggestion-chip" onclick="askChatbot('¿Cuáles son las ofertas a Cancún?')">Ofertas a
+                        Cancún 2x1</button>
+                    <button class="suggestion-chip" onclick="askChatbot('Háblame de Tokio')">Viaje a Tokio</button>
+                    <button class="suggestion-chip" onclick="askChatbot('¿Cómo puedo reservar?')">Cómo reservar</button>
+                </div>
+            </div>
+
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbot-input" placeholder="Pregunta sobre destinos, ofertas..."
+                    aria-label="Escribe tu mensaje">
+                <button id="chatbot-send-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mouse Airplane Follower -->
+    <div class="mouse-airplane" id="mouse-airplane">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2 21l21-9L2 3v7l15 2-15 2z" />
+        </svg>
+    </div>
+
+    <!-- Script file -->
+    <script src="app.js"></script>
+</body>
+
+</html>
