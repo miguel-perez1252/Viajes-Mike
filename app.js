@@ -233,11 +233,7 @@ window.selectDestination = function(destVal) {
         select.value = destVal;
     }
     // Scroll smoothly to contact section
-    const contactSection = document.getElementById('contacto');
-    if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-};
+   
 
 window.fillDestinationSelect = function() {
     const quickDest = document.getElementById('quick-dest');
